@@ -2,8 +2,8 @@
 {
     public enum Status
     {
-        NaoIniciado=1,
-        EmAndamento =2,
-        Concluido=3
+        NotReady=1,
+        InProgress =2,
+        Concluded=3
     }
 }
