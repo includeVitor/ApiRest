@@ -4,13 +4,12 @@ using System.Text;
 
 namespace SmartDataInitiative.Business.Models
 {
-    public class ReportModel : Entity 
+    public class Model : Entity
     {
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string Descriptions { get; set; }
 
         /*EF Relation */
-        public Project Project { get; set; }
-        public IEnumerable<Model> Models { get; set; }
+        public ReportModel ReportModel { get; set; }
     }
 }
