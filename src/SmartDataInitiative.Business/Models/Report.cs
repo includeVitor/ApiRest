@@ -12,5 +12,6 @@ namespace SmartDataInitiative.Business.Models
         
         /*EF Relation */
         public ReportModel ReportModel { get; set; }
+        public Field Field { get; set; }
     }
 }
