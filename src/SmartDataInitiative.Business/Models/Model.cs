@@ -6,6 +6,7 @@ namespace SmartDataInitiative.Business.Models
 {
     public class Model : Entity
     {
+        public Guid ReportModelId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
