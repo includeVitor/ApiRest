@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SmartDataInitiative.Business.Models
 {
-    abstract class Entity
+    public abstract class Entity
     {
         protected Entity()
         {

@@ -4,14 +4,9 @@ using System.Text;
 
 namespace SmartDataInitiative.Business.Models
 {
-    public class Project : Entity
+    public class Status : Entity
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime InitialDate { get; set; }
-        public DateTime FinalDate { get; set; }
-
-
-
     }
 }
