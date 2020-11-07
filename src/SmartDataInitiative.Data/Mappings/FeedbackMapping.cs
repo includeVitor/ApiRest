@@ -7,9 +7,9 @@ using System.Text;
 
 namespace SmartDataInitiative.Data.Mappings
 {
-    public class ReportModelMapping : IEntityTypeConfiguration<ReportModel>
+    public class FeedbackMapping : IEntityTypeConfiguration<Feedback>
     {
-        public void Configure(EntityTypeBuilder<ReportModel> builder)
+        public void Configure(EntityTypeBuilder<Feedback> builder)
         {
             builder.HasKey(p => p.Id);
 
@@ -21,12 +21,7 @@ namespace SmartDataInitiative.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(2000)");
 
-            // 1 : N => ReportModel : Models
-            builder.HasMany(f => f.Models)
-                .WithOne(p => p.ReportModel)
-                .HasForeignKey(p => p.ReportModelId);
-
-            builder.ToTable("ReportModels");
+            builder.ToTable("Feedbacks");
         }
     }
 }
