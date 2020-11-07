@@ -3,6 +3,8 @@
     public enum FeedbackType
     {
         Suggestion = 1,
-        Problem = 2
+        Question = 2,
+        Problem = 3,
+        
     }
 }
