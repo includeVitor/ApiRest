@@ -8,6 +8,7 @@ namespace SmartDataInitiative.Business.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public FeedbackType FeedbackType { get; set; }
 
         /* EF Relation */
         public Field Field { get; set; }
