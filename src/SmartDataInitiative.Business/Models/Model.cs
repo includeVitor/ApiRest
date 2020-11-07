@@ -7,7 +7,7 @@ namespace SmartDataInitiative.Business.Models
     public class Model : Entity
     {
         public string Name { get; set; }
-        public string Descriptions { get; set; }
+        public string Description { get; set; }
 
         /*EF Relation */
         public ReportModel ReportModel { get; set; }

@@ -13,7 +13,7 @@ namespace SmartDataInitiative.Business.Models
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
                 .Length(3, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres");
 
-            RuleFor(p => p.Name)
+            RuleFor(p => p.Description)
                .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
                .Length(3, 2000).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres");
         }
