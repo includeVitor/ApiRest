@@ -29,6 +29,8 @@ namespace SmartDataInitiative.Data.Mappings
                 .WithOne(p => p.Project)
                 .HasForeignKey(p => p.ProjectId);
 
+            builder.ToTable("Projects");
+
         }
     }
 }
