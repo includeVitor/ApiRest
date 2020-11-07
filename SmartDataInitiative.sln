@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartDataInitiative.Data", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartDataInitiative.Business", "src\SmartDataInitiative.Business\SmartDataInitiative.Business.csproj", "{EE229901-57BD-47F8-9CF3-9DF444DB9EAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDataInitiative.Api", "src\SmartDataInitiative.Api\SmartDataInitiative.Api.csproj", "{9818D6C2-574B-48B8-9DFB-EF78CE0F2C14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{EE229901-57BD-47F8-9CF3-9DF444DB9EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE229901-57BD-47F8-9CF3-9DF444DB9EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE229901-57BD-47F8-9CF3-9DF444DB9EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9818D6C2-574B-48B8-9DFB-EF78CE0F2C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9818D6C2-574B-48B8-9DFB-EF78CE0F2C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9818D6C2-574B-48B8-9DFB-EF78CE0F2C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9818D6C2-574B-48B8-9DFB-EF78CE0F2C14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A7031511-10EF-4651-B918-34F6C7BC4B6A} = {CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}
 		{EE229901-57BD-47F8-9CF3-9DF444DB9EAF} = {CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}
+		{9818D6C2-574B-48B8-9DFB-EF78CE0F2C14} = {CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DE3FDBF-1A18-4BF6-BFC8-3DDB6F3066AA}
