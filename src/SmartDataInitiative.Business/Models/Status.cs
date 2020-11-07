@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SmartDataInitiative.Business.Models
+﻿namespace SmartDataInitiative.Business.Models
 {
-    public class Status : Entity
+    public enum Status
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        NaoIniciado=1,
+        EmAndamento =2,
+        Concluido=3
     }
 }

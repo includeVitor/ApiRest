@@ -11,6 +11,10 @@ namespace SmartDataInitiative.Business.Models
         public DateTime InitialDate { get; set; }
         public DateTime FinalDate { get; set; }
 
+        /* EF Relation */
+
+
+
 
 
     }
