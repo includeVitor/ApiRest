@@ -10,12 +10,10 @@ namespace SmartDataInitiative.Business.Models
         public string Description { get; set; }
         public DateTime InitialDate { get; set; }
         public DateTime FinalDate { get; set; }
+        public Status Status { get; set; }
 
-        /* EF Relation */
-
-
-
-
-
+        /*EF Relation*/      
+        public IEnumerable<Field> Fields { get; set; }
+        public IEnumerable<ReportModel> ReportModels { get; set; }
     }
 }
