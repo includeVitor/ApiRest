@@ -21,7 +21,7 @@ namespace SmartDataInitiative.Data.Mappings
             // 1 : N => Field : Reports
             builder.HasMany(f => f.Reports)
                 .WithOne(p => p.Field)
-                .HasForeignKey(p => p.Field);
+                .HasForeignKey(p => p.FieldId);
 
 
             builder.ToTable("Fields");
