@@ -23,6 +23,11 @@ namespace SmartDataInitiative.Data.Mappings
                 .WithOne(p => p.Field)
                 .HasForeignKey(p => p.FieldId);
 
+            // 1 : N => Field : Feedbacks
+            builder.HasMany(f => f.Feedbacks)
+                .WithOne(p => p.Field)
+                .HasForeignKey(p => p.FieldId);
+
 
             builder.ToTable("Fields");
         }

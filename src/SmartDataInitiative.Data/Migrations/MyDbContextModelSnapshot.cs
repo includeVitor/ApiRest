@@ -179,7 +179,7 @@ namespace SmartDataInitiative.Data.Migrations
             modelBuilder.Entity("SmartDataInitiative.Business.Models.Feedback", b =>
                 {
                     b.HasOne("SmartDataInitiative.Business.Models.Field", "Field")
-                        .WithMany()
+                        .WithMany("Feedbacks")
                         .HasForeignKey("FieldId")
                         .IsRequired();
                 });

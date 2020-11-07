@@ -15,6 +15,7 @@ namespace SmartDataInitiative.Business.Models
         /*EF Relation */
         public Project Project { get; set; }
         public IEnumerable<Report> Reports { get; set; }
+        public IEnumerable<Feedback> Feedbacks { get; set; }
     }
 }
 

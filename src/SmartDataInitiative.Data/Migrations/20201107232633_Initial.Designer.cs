@@ -10,7 +10,7 @@ using SmartDataInitiative.Data.Context;
 namespace SmartDataInitiative.Data.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20201107225906_Initial")]
+    [Migration("20201107232633_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -181,7 +181,7 @@ namespace SmartDataInitiative.Data.Migrations
             modelBuilder.Entity("SmartDataInitiative.Business.Models.Feedback", b =>
                 {
                     b.HasOne("SmartDataInitiative.Business.Models.Field", "Field")
-                        .WithMany()
+                        .WithMany("Feedbacks")
                         .HasForeignKey("FieldId")
                         .IsRequired();
                 });
