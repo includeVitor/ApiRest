@@ -14,10 +14,14 @@ namespace SmartDataInitiative.Data.Repository
     {
         public ModelRepository(MyDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<Model>> GetModelsInReportModel(Guid ReportModelId) => await
+        public async Task<IEnumerable<Model>> GetModelsByReportModel(Guid ReportModelId) => await
                    Db.Models.AsNoTracking()
                    .Where(c => c.ReportModelId == ReportModelId)
                    .ToListAsync();
+
+        public async Task<Model> GetReportModelInModel(Guid id) => await
+                   Db.Models.AsNoTracking()
+                   .FirstOrDefaultAsync(c => c.Id == id);
 
     }
 }

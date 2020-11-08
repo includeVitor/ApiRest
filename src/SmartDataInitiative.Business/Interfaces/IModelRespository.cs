@@ -8,7 +8,8 @@ namespace SmartDataInitiative.Business.Interfaces
 {
     public interface IModelRespository : IRepository<Model>
     {
-        Task<IEnumerable<Model>> GetModelsInReportModel(Guid ReportModelId);
+        Task<IEnumerable<Model>> GetModelsByReportModel(Guid ReportModelId);
+        Task<Model> GetReportModelInModel(Guid Id);
 
     }
 }

@@ -18,6 +18,15 @@ namespace SmartDataInitiative.Data.Repository
                     Db.ReportModels.AsNoTracking()
                     .Include(c => c.Models)
                     .FirstOrDefaultAsync(c => c.Id == id);
-                    
+        public async Task<ReportModel> GetProjectInReportModel(Guid id) => await
+                    Db.ReportModels.AsNoTracking()
+                    .Include(c => c.Project)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+        public async Task<ReportModel> GetReportModelsByProject(Guid ProjectId) => await
+                    Db.ReportModels.AsNoTracking()
+                    .Include(c => c.Project)
+                    .FirstOrDefaultAsync(c => c.ProjectId == ProjectId);
+      
+
     }
 }

@@ -9,5 +9,7 @@ namespace SmartDataInitiative.Business.Interfaces
     public interface IReportModelRepository : IRepository<ReportModel>
     {
         Task<ReportModel> GetModelsInReportModel(Guid id);
+        Task<ReportModel> GetProjectInReportModel(Guid id);
+        Task<ReportModel> GetReportModelsByProject(Guid ProjectId);
     }
 }
