@@ -4,7 +4,13 @@ using System.Text;
 
 namespace SmartDataInitiative.Business.Notify
 {
-    class Notify
+    public class Notify 
     {
+        public string Mesage { get; set; }
+
+        public Notify(string mesage)
+        {
+            Mesage = mesage;
+        }
     }
 }
