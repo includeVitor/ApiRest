@@ -8,8 +8,9 @@ namespace SmartDataInitiative.Business.Interfaces
 {
     public interface IFieldRepository : IRepository<Field>
     {
-        Task<IEnumerable<Field>> GetAllReportsByField(Guid id);
-        Task<IEnumerable<Field>> GetAllFeedbacksByField(Guid id);
+        Task<Field> GetReportsInField(Guid id);
+        Task<Field> GetFeedbacksInField(Guid id);
+        Task<IEnumerable<Field>> GetFieldsByProject(Guid ProjectId);
 
     }
 }

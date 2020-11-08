@@ -14,10 +14,10 @@ namespace SmartDataInitiative.Data.Repository
     {
         public ReportModelRespository(MyDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<ReportModel>> GetAllModelsByReportModel(Guid id) => await
+        public async Task<ReportModel> GetModelsInReportModel(Guid id) => await
                     Db.ReportModels.AsNoTracking()
                     .Include(c => c.Models)
-                    .Where(c => c.Id == id)
-                    .ToListAsync();
+                    .FirstOrDefaultAsync(c => c.Id == id);
+                    
     }
 }

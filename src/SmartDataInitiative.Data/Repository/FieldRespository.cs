@@ -14,16 +14,19 @@ namespace SmartDataInitiative.Data.Repository
     {
         public FieldRespository(MyDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<Field>> GetAllReportsByField(Guid id) => await
+        public async Task<Field> GetReportsInField(Guid id) => await
                    Db.Fields.AsNoTracking()
-                   .Include(c => c.Feedbacks)
-                   .Where(c => c.Id == id)
-                   .ToListAsync();
+                   .Include(c => c.Reports)
+                   .FirstOrDefaultAsync(c => c.Id == id);
 
-        public async Task<IEnumerable<Field>> GetAllFeedbacksByField(Guid id) => await
+        public async Task<Field> GetFeedbacksInField(Guid id) => await
                     Db.Fields.AsNoTracking()
                     .Include(c => c.Feedbacks)
-                    .Where(c => c.Id == id)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+
+        public async Task<IEnumerable<Field>> GetFieldsByProject(Guid ProjectId) => await
+                    Db.Fields.AsNoTracking()
+                    .Where(c => c.ProjectId == ProjectId)
                     .ToListAsync();
 
     }
