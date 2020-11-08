@@ -10,7 +10,7 @@ namespace SmartDataInitiative.Business.Services
 {
     public class ProjectService : IProjectService
     {
-        public async Task<bool> Add(Project project)
+        public  Task<bool> Add(Project project)
         {
             throw new NotImplementedException();
         }
