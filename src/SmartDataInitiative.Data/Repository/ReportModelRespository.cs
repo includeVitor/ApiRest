@@ -3,9 +3,6 @@ using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Models;
 using SmartDataInitiative.Data.Context;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SmartDataInitiative.Data.Repository
