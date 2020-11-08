@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmartDataInitiative.Business.Notify
+namespace SmartDataInitiative.Business.Notications
 {
     public class Notify 
     {

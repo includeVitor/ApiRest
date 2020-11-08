@@ -1,10 +1,9 @@
-﻿using System;
+﻿using SmartDataInitiative.Business.Notications;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SmartDataInitiative.Business.Interfaces
 {
-    public interface Notify
+    public interface INotify
     {
         bool HaveNotifications();
         List<Notify> GetAllNotifications();
