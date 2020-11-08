@@ -6,5 +6,6 @@ namespace SmartDataInitiative.Business.Services
 {
     public class ProjectService
     {
+
     }
 }
