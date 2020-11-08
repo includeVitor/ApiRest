@@ -1,5 +1,6 @@
 ﻿using SmartDataInitiative.Business.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SmartDataInitiative.Business.Interfaces
@@ -8,6 +9,6 @@ namespace SmartDataInitiative.Business.Interfaces
     {
         Task<ReportModel> GetModelsInReportModel(Guid id);
         Task<ReportModel> GetProjectInReportModel(Guid id);
-        Task<ReportModel> GetReportModelsByProject(Guid ProjectId);
+        Task<IEnumerable<ReportModel>> GetReportModelsByProject(Guid ProjectId);
     }
 }

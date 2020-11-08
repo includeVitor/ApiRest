@@ -13,11 +13,17 @@ namespace SmartDataInitiative.Business.Services
     public class ProjectService : BaseService, IProjectService
     {
         private readonly IProjectRepository _projectRepository;
+        private readonly IReportModelRepository _reportModelRepository;
+        private readonly IFieldRepository _fieldRepository;
 
-        public ProjectService(INotify notify, 
-                              IProjectRepository projectRepository) : base(notify)
+        public ProjectService(INotify notify,
+                              IProjectRepository projectRepository, 
+                              IFieldRepository fieldRepository, 
+                              IReportModelRepository reportModelRepository) : base(notify)
         {
             _projectRepository = projectRepository;
+            _fieldRepository = fieldRepository;
+            _reportModelRepository = reportModelRepository;
         }
 
         public async Task<bool> Add(Project project)
@@ -60,9 +66,30 @@ namespace SmartDataInitiative.Business.Services
             return true;
         }
 
-        public Task<bool> Remove(Project project)
+        public async Task<bool> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var reportModels = await _reportModelRepository.GetReportModelsByProject(id);
+
+            if(reportModels != null)
+            {
+                foreach (var reportModel in reportModels)
+                {
+                    await _reportModelRepository.Remove(reportModel.Id);
+                }
+            }
+
+            var fields = await _fieldRepository.GetFieldsByProject(id);
+
+            if (fields != null)
+            {
+                foreach (var field in fields)
+                {
+                    await _reportModelRepository.Remove(field.Id);
+                }
+            }
+
+            await _projectRepository.Remove(id);
+            return true;
         }
 
         public Task<bool> SaveField(Project project)

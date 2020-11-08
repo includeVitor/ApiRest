@@ -48,7 +48,7 @@ namespace SmartDataInitiative.Data.Repository
             await SaveChanges();
         }
 
-        public virtual async Task Delete(Guid id)
+        public virtual async Task Remove(Guid id)
         {
             DbSet.Remove(new TEntity { Id = id });
             await SaveChanges();

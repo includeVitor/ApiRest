@@ -12,7 +12,7 @@ namespace SmartDataInitiative.Business.Interfaces
         Task<TEntity> GetById(Guid id);
         Task<List<TEntity>> All();
         Task Update(TEntity entity);
-        Task Delete(Guid id);
+        Task Remove(Guid id);
         Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
         Task<int> SaveChanges();
 

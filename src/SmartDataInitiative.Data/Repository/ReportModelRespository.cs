@@ -3,6 +3,8 @@ using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Models;
 using SmartDataInitiative.Data.Context;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SmartDataInitiative.Data.Repository
@@ -19,10 +21,10 @@ namespace SmartDataInitiative.Data.Repository
                     Db.ReportModels.AsNoTracking()
                     .Include(c => c.Project)
                     .FirstOrDefaultAsync(c => c.Id == id);
-        public async Task<ReportModel> GetReportModelsByProject(Guid ProjectId) => await
+        public async Task<IEnumerable<ReportModel>> GetReportModelsByProject(Guid ProjectId) => await
                     Db.ReportModels.AsNoTracking()
-                    .Include(c => c.Project)
-                    .FirstOrDefaultAsync(c => c.ProjectId == ProjectId);
+                    .Where(c => c.ProjectId == ProjectId)
+                    .ToListAsync();
       
 
     }
