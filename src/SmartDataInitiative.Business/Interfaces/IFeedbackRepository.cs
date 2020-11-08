@@ -9,6 +9,6 @@ namespace SmartDataInitiative.Business.Interfaces
     public interface IFeedbackRepository : IRepository<Feedback>
     {
         Task<Feedback> GetFieldInFeedback(Guid id);
-        Task<IEnumerable<Field>> GetFeedbacksByField(Guid FieldId);
+        Task<IEnumerable<Feedback>> GetFeedbacksByField(Guid FieldId);
     }
 }
