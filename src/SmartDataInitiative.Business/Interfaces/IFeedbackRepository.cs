@@ -1,0 +1,14 @@
+﻿using SmartDataInitiative.Business.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SmartDataInitiative.Business.Interfaces
+{
+    public interface IFeedbackRepository : IRepository<Feedback>
+    {
+        Task<Feedback> GetFieldInFeedback(Guid id);
+        Task<IEnumerable<Field>> GetFeedbacksByField(Guid FieldId);
+    }
+}
