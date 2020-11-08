@@ -19,6 +19,8 @@ namespace SmartDataInitiative.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(2000)");
 
+            builder.HasIndex(p => p.Name).IsUnique();
+
             // 1 : N => Project : Fields
             builder.HasMany(f => f.Fields)
                 .WithOne(p => p.Project)

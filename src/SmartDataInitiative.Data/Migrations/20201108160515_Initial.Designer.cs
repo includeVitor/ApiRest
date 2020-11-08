@@ -10,7 +10,7 @@ using SmartDataInitiative.Data.Context;
 namespace SmartDataInitiative.Data.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20201107232633_Initial")]
+    [Migration("20201108160515_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,6 +123,9 @@ namespace SmartDataInitiative.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Projects");
                 });

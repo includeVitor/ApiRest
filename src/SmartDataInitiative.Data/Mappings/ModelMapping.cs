@@ -6,7 +6,7 @@ namespace SmartDataInitiative.Data.Mappings
 {
     public class ModelMapping : IEntityTypeConfiguration<Model>
     {
-        void IEntityTypeConfiguration<Model>.Configure(EntityTypeBuilder<Model> builder)
+        public void Configure(EntityTypeBuilder<Model> builder)
         {
             builder.HasKey(p => p.Id);
 

@@ -1,19 +1,43 @@
 ﻿using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Models;
+using SmartDataInitiative.Business.Models.Validations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SmartDataInitiative.Business.Services
 {
-    public class ProjectService : IProjectService
+    public class ProjectService : BaseService, IProjectService
     {
+        private readonly IProjectRepository _projectRepository;
 
-        public  Task<bool> Add(Project project)
+        public ProjectService(INotify notify, 
+                              IProjectRepository projectRepository) : base(notify)
         {
-            throw new NotImplementedException();
+            _projectRepository = projectRepository;
+        }
+
+        public async Task<bool> Add(Project project)
+        {
+            if (!ExecuteValidation(new ProjectValidation(), project)) return false;
+
+            if (_projectRepository.Find(p => p.Name == project.Name).Result.Any())
+            {
+                Notify("Já existe um projeto com esse nome");
+                return false;
+            }
+
+            if(DateTime.Compare(project.InitialDate,project.FinalDate) <= 0)
+            {
+                Notify("A data inicial deve ser maior que a data final");
+                return false;
+            }
+
+            await _projectRepository.Add(project);
+            return true;
         }
 
         public Task<bool> Remove(Project project)

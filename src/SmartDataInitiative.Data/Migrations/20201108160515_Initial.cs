@@ -148,6 +148,12 @@ namespace SmartDataInitiative.Data.Migrations
                 column: "ReportModelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Projects_Name",
+                table: "Projects",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ReportModels_ProjectId",
                 table: "ReportModels",
                 column: "ProjectId");
