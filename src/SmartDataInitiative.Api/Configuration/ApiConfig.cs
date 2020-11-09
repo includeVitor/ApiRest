@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace SmartDataInitiative.Api.Configuration
@@ -30,6 +31,18 @@ namespace SmartDataInitiative.Api.Configuration
             services.AddMvc();
 
             return services;
+        }
+
+        public static IApplicationBuilder UseMvcConfiguration(this IApplicationBuilder app)
+        {
+            app.UseRouting()
+               .UseEndpoints(endpoints =>
+               {
+                   endpoints.MapControllers();
+               });
+
+
+            return app;
         }
 
     }

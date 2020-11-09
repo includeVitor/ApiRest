@@ -48,11 +48,7 @@ namespace SmartDataInitiative.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting()
-               .UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseMvcConfiguration();
         }
     }
 }

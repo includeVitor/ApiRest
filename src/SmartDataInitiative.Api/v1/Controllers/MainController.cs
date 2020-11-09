@@ -49,9 +49,6 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse();
         }
 
-
-
-
         protected void NotifyInvalidModelState(ModelStateDictionary modelState)
         {
             foreach (var error in modelState.Values.SelectMany(e => e.Errors))
