@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Models;
@@ -37,13 +38,20 @@ namespace SmartDataInitiative.Api.v1.Controllers
         public async Task<ActionResult<Project>> Show(Guid id)
         {
             var project = await GetProject(id);
-
+                
             if (project == null) return BadRequest();
 
             return project;
         }
 
+        public async Task<ActionResult<ProjectViewModel>> Add(ProjectViewModel projectViewModel)
+        {
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
 
+            await _projectService.Add(_mapper.Map<Project>(projectViewModel));
+
+            return FormattedResponse(projectViewModel);
+        }
 
 
 
