@@ -11,7 +11,7 @@ namespace SmartDataInitiative.Business.Interfaces.Services
         Task<bool> Add(Project project);
         Task<bool> Update(Project project);
         Task<bool> Remove(Guid id);
-        Task<bool> SaveField(Project project);
-        Task<bool> SaveReportModel(Project project);
+        Task<bool> SaveField(Field field);
+        Task<bool> SaveReportModel(ReportModel reportModel);
     }
 }

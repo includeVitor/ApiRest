@@ -92,9 +92,18 @@ namespace SmartDataInitiative.Business.Services
             return true;
         }
 
-        public Task<bool> SaveField(Project project)
+        public async Task<bool> SaveField(Field field)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new FieldValidation(), field)) return false;
+
+            if (_fieldRepository.Find(p => p.Name == field.Name && p.ProjectId == field.ProjectId).Result.Any())
+            {
+                Notify("Já existe uma área com esse nome");
+                return false;
+            }
+
+            await _fieldRepository.Add(field);
+            return true;
         }
 
         public Task<bool> SaveReportModel(Project project)
