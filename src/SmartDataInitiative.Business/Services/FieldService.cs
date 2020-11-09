@@ -13,11 +13,18 @@ namespace SmartDataInitiative.Business.Services
     public class FieldService : BaseService, IFieldService
     {
         private readonly IFieldRepository _fieldRepository;
+        private readonly IFeedbackRepository _feedbackRepository;
+        private readonly IReportRepository _reportRepository;
+
 
         public FieldService(INotify notify,
-                            IFieldRepository fieldRepository) : base(notify)
+                            IFieldRepository fieldRepository,
+                            IFeedbackRepository feedbackRepository, 
+                            IReportRepository reportRepository) : base(notify)
         {
             _fieldRepository = fieldRepository;
+            _feedbackRepository = feedbackRepository;
+            _reportRepository = reportRepository;
         }
 
         public async Task<IEnumerable<Field>> All() => await _fieldRepository.All();
@@ -52,8 +59,28 @@ namespace SmartDataInitiative.Business.Services
             return true;
         }
 
-        public async Task<bool> Remove(Guid id){ 
-            
+        public async Task<bool> Remove(Guid id){
+
+            var feedbacks = await  _feedbackRepository.GetFeedbacksByField(id);
+
+            if(feedbacks != null)
+            {
+                foreach (var feedback in feedbacks)
+                {
+                    await _feedbackRepository.Remove(feedback.Id);
+                }
+            }
+
+            var reports = await _reportRepository.GetReportsByField(id);
+
+            if (reports != null)
+            {
+                foreach (var report in reports)
+                {
+                    await _feedbackRepository.Remove(report.Id);
+                }
+            }
+
             await _fieldRepository.Remove(id);  
             return true; 
         }

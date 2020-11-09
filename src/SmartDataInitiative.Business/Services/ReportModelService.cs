@@ -4,6 +4,7 @@ using SmartDataInitiative.Business.Models;
 using SmartDataInitiative.Business.Models.Validations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,18 +37,29 @@ namespace SmartDataInitiative.Business.Services
             await _reportModelRepository.Add(reportModel);
             return true;
         }
-        public Task<bool> Update(ReportModel reportModel)
+
+        public async Task<bool> Update(ReportModel reportModel)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new ReportModelValidation(), reportModel)) return false;
+
+            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.Id == reportModel.Id).Result.Any())
+            {
+                Notify("Já existe um modelo de report com esse nome");
+                return false;
+            }
+
+            await _reportModelRepository.Update(reportModel);
+            return true;
         }
 
-        public Task<bool> Remove(Guid id)
+        public async Task<bool> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            await _reportModelRepository.Remove(id);
+            return true;
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _reportModelRepository?.Dispose();
         }
     }
 }
