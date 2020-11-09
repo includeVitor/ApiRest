@@ -28,8 +28,4 @@
     <ProjectReference Include="..\SmartDataInitiative.Data\SmartDataInitiative.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
 </Project>
