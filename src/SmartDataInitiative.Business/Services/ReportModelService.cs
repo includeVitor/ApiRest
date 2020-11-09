@@ -13,11 +13,17 @@ namespace SmartDataInitiative.Business.Services
     public class ReportModelService : BaseService, IReportModelService
     {
         private readonly IReportModelRepository _reportModelRepository;
+        private readonly IModelRespository _modelRespository;
+        private readonly IReportRepository _reportRepository;
 
-        public ReportModelService(INotify notify, 
-                                  IReportModelRepository reportModelRepository) : base(notify)
+        public ReportModelService(INotify notify,
+                                  IReportModelRepository reportModelRepository,
+                                  IModelRespository modelRespository, 
+                                  IReportRepository reportRepository) : base(notify)
         {
             _reportModelRepository = reportModelRepository;
+            _modelRespository = modelRespository;
+            _reportRepository = reportRepository;
         }
 
         public async Task<IEnumerable<ReportModel>> All() => await _reportModelRepository.All();
@@ -54,6 +60,28 @@ namespace SmartDataInitiative.Business.Services
 
         public async Task<bool> Remove(Guid id)
         {
+            var models = await _modelRespository.GetModelsByReportModel(id);
+
+            if (models != null)
+            {
+                foreach (var model in models)
+                {
+                    await _modelRespository.Remove(model.Id);
+                }
+            }
+
+
+            var reports = await _reportRepository.GetReportsByField(id);
+
+            if (reports != null)
+            {
+                foreach (var report in reports)
+                {
+                    await _reportRepository.Remove(report.Id);
+                }
+            }
+
+
             await _reportModelRepository.Remove(id);
             return true;
         }

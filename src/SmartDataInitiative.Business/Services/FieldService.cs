@@ -77,7 +77,7 @@ namespace SmartDataInitiative.Business.Services
             {
                 foreach (var report in reports)
                 {
-                    await _feedbackRepository.Remove(report.Id);
+                    await _reportRepository.Remove(report.Id);
                 }
             }
 
