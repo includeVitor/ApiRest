@@ -28,10 +28,10 @@ namespace SmartDataInitiative.Data.Repository
                     .Include(c => c.Fields)
                     .FirstOrDefaultAsync(c => c.Id == id);
         public async Task<IEnumerable<Project>> GetAllProjects() => await
-                            Db.Projects.AsNoTracking()
-                            .Include(c => c.ReportModels)
-                            .Include(c => c.Fields)
-                            .ToListAsync();
+                    Db.Projects.AsNoTracking()
+                    .Include(c => c.ReportModels)
+                    .Include(c => c.Fields)
+                    .ToListAsync();
 
 
     }

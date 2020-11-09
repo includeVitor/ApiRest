@@ -25,7 +25,19 @@ namespace SmartDataInitiative.Data.Repository
                     Db.ReportModels.AsNoTracking()
                     .Where(c => c.ProjectId == ProjectId)
                     .ToListAsync();
-      
+
+        public async Task<ReportModel> GetAllInReportModel(Guid id) => await
+                    Db.ReportModels.AsNoTracking()
+                    .Include(c => c.Models)
+                    .Include(c => c.Project)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+
+        public async Task<IEnumerable<ReportModel>> GetAllReportModels() => await
+                 Db.ReportModels.AsNoTracking()
+                 .Include(c => c.Models)
+                 .Include(c => c.Project)
+                 .ToListAsync();
+
 
     }
 }

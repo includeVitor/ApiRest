@@ -1,4 +1,5 @@
 ﻿]using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Models;
@@ -22,7 +23,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _mapper = mapper;
         }
 
-
+        [HttpGet]
+        public async Task<IEnumerable<ReportModel>> All() => await _reportService();
 
 
 

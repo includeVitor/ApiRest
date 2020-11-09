@@ -10,5 +10,8 @@ namespace SmartDataInitiative.Business.Interfaces
         Task<ReportModel> GetModelsInReportModel(Guid id);
         Task<ReportModel> GetProjectInReportModel(Guid id);
         Task<IEnumerable<ReportModel>> GetReportModelsByProject(Guid ProjectId);
+        Task<ReportModel> GetAllInReportModel(Guid id);
+        Task<IEnumerable<ReportModel>> GetAllReportModels();
+
     }
 }
