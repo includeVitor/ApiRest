@@ -25,6 +25,10 @@ namespace SmartDataInitiative.Business.Services
             _fieldRepository = fieldRepository;
             _reportModelRepository = reportModelRepository;
         }
+        
+        public async Task<IEnumerable<Project>> All() => await _projectRepository.All();
+
+        public async Task<Project> Show(Guid id) => await _projectRepository.GetById(id);   
 
         public async Task<bool> Add(Project project)
         {
@@ -89,34 +93,6 @@ namespace SmartDataInitiative.Business.Services
             }
 
             await _projectRepository.Remove(id);
-            return true;
-        }
-
-        public async Task<bool> SaveField(Field field)
-        {
-            if (!ExecuteValidation(new FieldValidation(), field)) return false;
-
-            if (_fieldRepository.Find(p => p.Name == field.Name && p.ProjectId == field.ProjectId).Result.Any())
-            {
-                Notify("Já existe uma área com esse nome");
-                return false;
-            }
-
-            await _fieldRepository.Add(field);
-            return true;
-        }
-
-        public async Task<bool> SaveReportModel(ReportModel reportModel)
-        {
-            if (!ExecuteValidation(new ReportModelValidation(), reportModel)) return false;
-
-            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.ProjectId == reportModel.ProjectId).Result.Any())
-            {
-                Notify("Já existe uma modelo de report com esse nome");
-                return false;
-            }
-
-            await _reportModelRepository.Add(reportModel);
             return true;
         }
 
