@@ -36,7 +36,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Field>> Show(Guid id)
         {
-            var field = await _fieldService.Show(id);
+            var field = await GetField(id);
 
             if (field == null) return NotFound();
 
@@ -70,11 +70,15 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         }
 
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult<FieldViewModel>> Remove(Guid id)
+        {
+            var field = await GetField(id);
 
+            if (field == null) return NotFound();
 
-
-
-
+            return FormattedResponse(field);
+        }
 
         private async Task<Field> GetField(Guid id) => _mapper.Map<Field>(await _fieldService.Show(id));
 
