@@ -24,7 +24,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
 
         public ProjectsController(INotify notify,
-                                  IProjectService projectService, 
+                                  IProjectService projectService,
                                   IMapper mapper) : base(notify)
         {
             _projectService = projectService;
@@ -33,12 +33,12 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         [HttpGet]
         public async Task<IEnumerable<Project>> All() => _mapper.Map<IEnumerable<Project>>(await _projectService.All());
-        
+
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Project>> Show(Guid id)
         {
             var project = await GetProject(id);
-                
+
             if (project == null) return BadRequest();
 
             return project;
@@ -54,7 +54,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(projectViewModel);
         }
 
-        [HttpPut]
+        [HttpPut("{id:guid}")]
         public async Task<ActionResult<ProjectViewModel>> Update(Guid id, ProjectViewModel projectViewModel)
         {
             if(id == projectViewModel.Id)
