@@ -32,6 +32,15 @@ namespace SmartDataInitiative.Api.v1.Controllers
         public async Task<IEnumerable<Field>> All() => _mapper.Map<IEnumerable<Field>>(await _fieldService.All());
 
 
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<Field>> Show(Guid id)
+        {
+            var field = await _fieldService.Show(id);
+
+            if (field == null) return NotFound();
+
+            return FormattedResponse(field);
+        }
 
 
 

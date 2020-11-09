@@ -41,7 +41,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
             if (project == null) return BadRequest();
 
-            return project;
+            return FormattedResponse(project);
         }
 
         [HttpPost]
