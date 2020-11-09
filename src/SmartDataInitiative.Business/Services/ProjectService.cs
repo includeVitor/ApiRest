@@ -26,9 +26,9 @@ namespace SmartDataInitiative.Business.Services
             _reportModelRepository = reportModelRepository;
         }
         
-        public async Task<IEnumerable<Project>> All() => await _projectRepository.All();
+        public async Task<IEnumerable<Project>> All() => await _projectRepository.GetAllProjects();
 
-        public async Task<Project> Show(Guid id) => await _projectRepository.GetById(id);   
+        public async Task<Project> Show(Guid id) => await _projectRepository.GetAllInProjects(id);   
 
         public async Task<bool> Add(Project project)
         {
