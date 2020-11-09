@@ -24,31 +24,42 @@ namespace SmartDataInitiative.Business.Services
 
         public async Task<Report> Show(Guid id) => await _reportRepository.GetById(id);
 
-
         public async Task<bool> Add(Report report)
         {
             if (!ExecuteValidation(new ReportValidation(), report)) return false;
+
+            if (DateTime.Compare(report.InitialDate, report.FinalDate) <= 0)
+            {
+                Notify("A data inicial deve ser maior que a data final");
+                return false;
+            }
 
             await _reportRepository.Add(report);
             return true;
         }
 
-
-
-
-        public Task<bool> Update(Report report)
+        public async Task<bool> Update(Report report)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new ReportValidation(), report)) return false;
+
+            if (DateTime.Compare(report.InitialDate, report.FinalDate) <= 0)
+            {
+                Notify("A data inicial deve ser maior que a data final");
+                return false;
+            }
+
+            await _reportRepository.Update(report);
+            return true;
         }
 
-
-        public Task<bool> Remove(Guid id)
+        public async Task<bool> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            await _reportRepository.Remove(id);
+            return true;
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _reportRepository?.Dispose();
         }
 
     }
