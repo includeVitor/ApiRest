@@ -10,7 +10,6 @@ using SmartDataInitiative.Business.Notications;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
-    [ApiController]
     public class MainController : ControllerBase
     {
         private readonly INotify _notify;
@@ -60,7 +59,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         protected bool HasNoErros()
         {
-            return _notify.HaveNotifications();
+            return !_notify.HaveNotifications();
         }
 
         protected void NotifyError(string mesage)

@@ -14,7 +14,7 @@ using SmartDataInitiative.Data.Context;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
-
+    [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ProjectsController : MainController

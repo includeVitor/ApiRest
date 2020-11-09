@@ -28,9 +28,9 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new ReportValidation(), report)) return false;
 
-            if (DateTime.Compare(report.InitialDate, report.FinalDate) <= 0)
+            if (DateTime.Compare(report.FinalDate, report.InitialDate) <= 0)
             {
-                Notify("A data inicial deve ser maior que a data final");
+                Notify("A data final deve ser maior que a data inicial");
                 return false;
             }
 
@@ -42,9 +42,9 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new ReportValidation(), report)) return false;
 
-            if (DateTime.Compare(report.InitialDate, report.FinalDate) <= 0)
+            if (DateTime.Compare(report.FinalDate, report.InitialDate) <= 0)
             {
-                Notify("A data inicial deve ser maior que a data final");
+                Notify("A data final deve ser maior que a data inicial");
                 return false;
             }
 

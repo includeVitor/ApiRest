@@ -40,9 +40,9 @@ namespace SmartDataInitiative.Business.Services
                 return false;
             }
 
-            if(DateTime.Compare(project.InitialDate,project.FinalDate) <= 0)
+            if(DateTime.Compare(project.FinalDate,project.InitialDate) <= 0)
             {
-                Notify("A data inicial deve ser maior que a data final");
+                Notify("A data final deve ser maior que a data inicial");
                 return false;
             }
 
@@ -60,9 +60,9 @@ namespace SmartDataInitiative.Business.Services
                 return false;
             }
 
-            if (DateTime.Compare(project.InitialDate, project.FinalDate) <= 0)
+            if (DateTime.Compare(project.FinalDate, project.InitialDate) <= 0)
             {
-                Notify("A data inicial deve ser maior que a data final");
+                Notify("A data final deve ser maior que a data inicial");
                 return false;
             }
 
