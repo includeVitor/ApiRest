@@ -46,7 +46,7 @@ namespace SmartDataInitiative.Business.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _feedbackRepository?.Dispose();
         }
 
 
