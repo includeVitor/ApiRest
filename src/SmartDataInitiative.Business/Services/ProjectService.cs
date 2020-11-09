@@ -106,12 +106,19 @@ namespace SmartDataInitiative.Business.Services
             return true;
         }
 
-        public Task<bool> SaveReportModel(Project project)
+        public async Task<bool> SaveReportModel(ReportModel reportModel)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new ReportModelValidation(), reportModel)) return false;
+
+            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.ProjectId == reportModel.ProjectId).Result.Any())
+            {
+                Notify("Já existe uma modelo de report com esse nome");
+                return false;
+            }
+
+            await _reportModelRepository.Add(reportModel);
+            return true;
         }
-
-
 
         public void Dispose()
         {

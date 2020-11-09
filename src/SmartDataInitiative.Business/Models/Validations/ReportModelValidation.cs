@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmartDataInitiative.Business.Models.Validations
 {
-    public class ReportModelValidation : AbstractValidator<Field>
+    public class ReportModelValidation : AbstractValidator<ReportModel>
     {
         public ReportModelValidation()
         {
