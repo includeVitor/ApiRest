@@ -29,7 +29,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Field>> All() => _mapper.Map<Field>(await _fieldService.All());
+        public async Task<IEnumerable<Field>> All() => _mapper.Map<IEnumerable<Field>>(await _fieldService.All());
 
 
 
