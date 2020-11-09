@@ -42,6 +42,15 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(field);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<FieldViewModel>> Add(FieldViewModel fieldViewModel)
+        {
+
+
+            return FormattedResponse(fieldViewModel);
+        }
+
+
 
 
 
