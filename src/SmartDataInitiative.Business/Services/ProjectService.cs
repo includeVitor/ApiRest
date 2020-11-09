@@ -122,7 +122,9 @@ namespace SmartDataInitiative.Business.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _projectRepository?.Dispose();
+            _fieldRepository?.Dispose();
+            _reportModelRepository?.Dispose();
         }
     }
 }
