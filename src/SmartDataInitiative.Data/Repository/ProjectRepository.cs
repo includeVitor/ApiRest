@@ -22,7 +22,7 @@ namespace SmartDataInitiative.Data.Repository
                     Db.Projects.AsNoTracking()
                     .Include(c => c.ReportModels)
                     .FirstOrDefaultAsync(c => c.Id == id);
-        public async Task<Project> GetAllInProjects(Guid id) => await
+        public async Task<Project> GetAllInProject(Guid id) => await
                     Db.Projects.AsNoTracking()
                     .Include(c => c.ReportModels)
                     .Include(c => c.Fields)

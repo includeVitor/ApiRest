@@ -28,7 +28,7 @@ namespace SmartDataInitiative.Business.Services
         
         public async Task<IEnumerable<Project>> All() => await _projectRepository.GetAllProjects();
 
-        public async Task<Project> Show(Guid id) => await _projectRepository.GetAllInProjects(id);   
+        public async Task<Project> Show(Guid id) => await _projectRepository.GetAllInProject(id);   
 
         public async Task<bool> Add(Project project)
         {

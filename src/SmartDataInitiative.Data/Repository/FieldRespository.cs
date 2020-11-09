@@ -28,7 +28,7 @@ namespace SmartDataInitiative.Data.Repository
                     .Where(c => c.ProjectId == ProjectId)
                     .ToListAsync();
 
-        public async Task<Field> GetAllInFields(Guid id) => await
+        public async Task<Field> GetAllInField(Guid id) => await
                   Db.Fields.AsNoTracking()
                   .Include(c => c.Reports)
                   .Include(c => c.Feedbacks)

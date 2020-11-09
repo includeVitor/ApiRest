@@ -9,7 +9,7 @@ namespace SmartDataInitiative.Business.Interfaces
     {
         Task<Project> GetFieldsInProject(Guid id);
         Task<Project> GetReportModelsInProject(Guid id);
-        Task<Project> GetAllInProjects(Guid id);
+        Task<Project> GetAllInProject(Guid id);
         Task<IEnumerable<Project>> GetAllProjects();
 
     }
