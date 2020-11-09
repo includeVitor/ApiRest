@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Models;
@@ -45,7 +46,9 @@ namespace SmartDataInitiative.Api.v1.Controllers
         [HttpPost]
         public async Task<ActionResult<FieldViewModel>> Add(FieldViewModel fieldViewModel)
         {
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
 
+            await _fieldService.Add(_mapper.Map<Field>(fieldViewModel));
 
             return FormattedResponse(fieldViewModel);
         }
