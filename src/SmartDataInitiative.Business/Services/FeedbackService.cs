@@ -1,6 +1,7 @@
 ﻿using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Models;
+using SmartDataInitiative.Business.Models.Validations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,23 +22,27 @@ namespace SmartDataInitiative.Business.Services
 
         public async Task<Feedback> Show(Guid id) => await _feedbackRepository.GetById(id);
 
-        public Task<bool> Update(Feedback feedback)
+        public async Task<bool> Add(Feedback feedback)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new FeebackValidation(), feedback)) return false;
+
+            await _feedbackRepository.Add(feedback);
+            return true;
         }
 
-
-        public Task<bool> Add(Feedback feedback)
+        public async Task<bool> Update(Feedback feedback)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new FeebackValidation(), feedback)) return false;
+
+            await _feedbackRepository.Update(feedback);
+            return true;
         }
 
-
-        public Task<bool> Remove(Guid id)
+        public async Task<bool> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            await _feedbackRepository.Remove(id);
+            return true;
         }
-
 
         public void Dispose()
         {
