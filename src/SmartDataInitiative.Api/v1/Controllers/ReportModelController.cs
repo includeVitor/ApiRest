@@ -36,6 +36,32 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(reportModel);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<ReportModel>> Add(ReportModel reportModel)
+        {
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
+
+            await _reportModelService.Add(_mapper.Map<ReportModel>(reportModel));
+
+            return FormattedResponse(reportModel);
+        }
+
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult<ReportModel>> Update(Guid id, ReportModel reportModel)
+        {
+            if(id != reportModel.Id)
+            {
+                NotifyError("Id incorreto");
+                return FormattedResponse(reportModel);
+            }
+
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
+
+            await _reportModelService.Update(_mapper.Map<ReportModel>(reportModel));
+
+            return FormattedResponse(reportModel);
+        }
+
 
 
         public async Task<ReportModel> GetReportModel(Guid id) => _mapper.Map<ReportModel>(await _reportModelService.Show(id));
