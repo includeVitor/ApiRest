@@ -29,6 +29,10 @@ namespace SmartDataInitiative.Api.ViewModels
         [Required]
         public Status Status { get; set; }
 
+        public IEnumerable<Field> Fields { get; set; }
+
+        public IEnumerable<ReportModel> ReportModels { get; set; }
+
 
     }
 }

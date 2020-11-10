@@ -63,6 +63,10 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
 
+        [HttpDelete]
+        public async Task<ActionResult
+
+
 
         public async Task<ReportModel> GetReportModel(Guid id) => _mapper.Map<ReportModel>(await _reportModelService.Show(id));
 
