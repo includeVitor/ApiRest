@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
+using SmartDataInitiative.Business.Models;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
@@ -38,6 +39,16 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
             return FormattedResponse(feedback);
         }
+
+        public async Task<ActionResult<FeedbackViewModel>> Add(FeedbackViewModel feedbackViewModel)
+        {
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
+
+            await _feedbackService.Add(_mapper.Map<Feedback>(feedbackViewModel));
+
+            return FormattedResponse(feedbackViewModel);
+        }
+
 
 
         public async Task<FeedbackViewModel> GetFeedback(Guid id) => _mapper.Map<FeedbackViewModel>(await _feedbackService.Show(id));
