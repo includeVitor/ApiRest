@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
+using SmartDataInitiative.Business.Models;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
@@ -36,6 +37,15 @@ namespace SmartDataInitiative.Api.v1.Controllers
             if (report == null) return NotFound();
 
             return FormattedResponse(report);
+        }
+
+        public async Task<ActionResult<ReportViewModel>> Add(ReportViewModel reportViewModel)
+        {
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
+
+            await _reportService.Add(_mapper.Map<Report>(reportViewModel));
+
+            return FormattedResponse(reportViewModel);
         }
 
 
