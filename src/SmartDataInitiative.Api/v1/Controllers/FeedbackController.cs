@@ -28,7 +28,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _mapper = mapper;
         }
 
-
+        public async Task<IEnumerable<FeedbackViewModel>> All() => _mapper.Map<IEnumerable<FeedbackViewModel>>(await _feedbackService.All());
 
 
         public async Task<FeedbackViewModel> GetFeedback(Guid id) => _mapper.Map<FeedbackViewModel>(await _feedbackService.Show(id));

@@ -9,5 +9,7 @@ namespace SmartDataInitiative.Business.Interfaces
     {
         Task<Feedback> GetFieldInFeedback(Guid id);
         Task<IEnumerable<Feedback>> GetFeedbacksByField(Guid FieldId);
+        Task<IEnumerable<Feedback>> GetFeedbacks();
+
     }
 }

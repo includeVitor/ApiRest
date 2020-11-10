@@ -23,5 +23,10 @@ namespace SmartDataInitiative.Data.Repository
               .Include(c => c.Field)
               .FirstOrDefaultAsync(c => c.Id == id);
 
+        public async Task<IEnumerable<Feedback>> GetFeedbacks() => await
+           Db.Feedbacks.AsNoTracking()
+           .Include(c => c.Field)
+           .ToListAsync();
+
     }
 }
