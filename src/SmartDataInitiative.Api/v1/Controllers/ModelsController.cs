@@ -67,14 +67,18 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(modelViewModel);
         }
 
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult<ModelViewModel>> Remove (Guid id)
+        {
+            var model = await GetModel(id);
 
+            if (model == null) return NotFound();
+
+            await _modelService.Remove(id);
+
+            return FormattedResponse(model);
+        }
 
         public async Task<ModelViewModel> GetModel(Guid id) => _mapper.Map<ModelViewModel>(await _modelService.Show(id));
-
-
-
-
-
-
     }
 }
