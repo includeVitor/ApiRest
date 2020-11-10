@@ -27,7 +27,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _mapper = mapper;
         }
 
-
+        public async Task<IEnumerable<ModelViewModel>> All() => _mapper.Map<IEnumerable<ModelViewModel>>(await _modelService.All());
 
 
 
