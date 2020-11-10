@@ -11,6 +11,8 @@ namespace SmartDataInitiative.Business.Interfaces
         Task<Report> GetFieldInReport(Guid id);
         Task<IEnumerable<Report>> GetReportsByReportModel(Guid ReportModelId);
         Task<IEnumerable<Report>> GetReportsByField(Guid FieldId);
+        Task<Report> GetAllInReport(Guid id);
+        Task<IEnumerable<Report>> GetAllReports();
 
     }
 }

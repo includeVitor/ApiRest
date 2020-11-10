@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 
@@ -25,6 +26,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _reportService = reportService;
             _mapper = mapper;
         }
+
+        public async Task<IEnumerable<ReportViewModel>> All() => _mapper.Map<IEnumerable<ReportViewModel>>(await _reportService.All());
 
 
         public async Task<ReportViewModel> GetReport(Guid id) => _mapper.Map<ReportViewModel>(await _reportService.Show(id));
