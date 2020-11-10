@@ -11,12 +11,15 @@ using System.Threading.Tasks;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
-    public class ReportModelController : MainController
+    [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    public class ReportModelsController : MainController
     {
         private readonly IReportModelService _reportModelService;
         private readonly IMapper _mapper;
 
-        public ReportModelController(INotify notify,
+        public ReportModelsController(INotify notify,
                                     IReportModelService reportModelService, 
                                     IMapper mapper) : base(notify)
         {

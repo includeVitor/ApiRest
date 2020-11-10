@@ -16,12 +16,12 @@ namespace SmartDataInitiative.Api.v1.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class FieldController : MainController
+    public class FieldsController : MainController
     {
         private readonly IMapper _mapper;
         private readonly IFieldService _fieldService;
 
-        public FieldController(INotify notify,
+        public FieldsController(INotify notify,
                                 IMapper mapper, 
                                 IFieldService fieldService) : base(notify)
         {
