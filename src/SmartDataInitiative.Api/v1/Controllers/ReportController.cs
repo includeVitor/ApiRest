@@ -29,6 +29,15 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public async Task<IEnumerable<ReportViewModel>> All() => _mapper.Map<IEnumerable<ReportViewModel>>(await _reportService.All());
 
+        public async Task<ActionResult<ReportViewModel>> Show(Guid id)
+        {
+            var report = await GetReport(id);
+
+            if (report == null) return NotFound();
+
+            return FormattedResponse(report);
+        }
+
 
         public async Task<ReportViewModel> GetReport(Guid id) => _mapper.Map<ReportViewModel>(await _reportService.Show(id));
     }
