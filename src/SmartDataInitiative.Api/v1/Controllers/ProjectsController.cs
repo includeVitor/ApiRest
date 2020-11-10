@@ -32,10 +32,10 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Project>> All() => _mapper.Map<IEnumerable<Project>>(await _projectService.All());
+        public async Task<IEnumerable<ProjectViewModel>> All() => _mapper.Map<IEnumerable<ProjectViewModel>>(await _projectService.All());
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Project>> Show(Guid id)
+        public async Task<ActionResult<ProjectViewModel>> Show(Guid id)
         {
             var project = await GetProject(id);
 
@@ -83,7 +83,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         }
 
-        private async Task<Project> GetProject(Guid id) => _mapper.Map<Project>(await _projectService.Show(id));
+        private async Task<ProjectViewModel> GetProject(Guid id) => _mapper.Map<ProjectViewModel>(await _projectService.Show(id));
 
     }
 }

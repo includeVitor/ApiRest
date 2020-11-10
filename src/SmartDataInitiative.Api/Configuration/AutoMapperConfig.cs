@@ -13,8 +13,8 @@ namespace SmartDataInitiative.Api.Configuration
         public AutoMapperConfig()
         {
             CreateMap<Project, ProjectViewModel>().ReverseMap();
-            //CreateMap<Field, FieldViewModel>().ReverseMap();
-            //CreateMap<ReportModel, ReportModelViewModel>().ReverseMap();
+            CreateMap<Field, FieldViewModel>().ReverseMap();
+            CreateMap<ReportModel, ReportModelViewModel>().ReverseMap();
             //CreateMap<Model, ModelViewModel>().ReverseMap();
             //CreateMap<Report, ReportViewModel>().ReverseMap();
             //CreateMap<Feedback, FeedbackViewModel>().ReverseMap();

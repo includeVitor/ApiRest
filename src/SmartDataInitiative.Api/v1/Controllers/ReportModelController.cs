@@ -1,5 +1,6 @@
-﻿]using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Models;
@@ -24,10 +25,10 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ReportModel>> All() => _mapper.Map<IEnumerable<ReportModel>>(await _reportModelService.All());
+        public async Task<IEnumerable<ReportModelViewModel>> All() => _mapper.Map<IEnumerable<ReportModelViewModel>>(await _reportModelService.All());
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<ReportModel>> Show(Guid id)
+        public async Task<ActionResult<ReportModelViewModel>> Show(Guid id)
         {
             var reportModel = await GetReportModel(id);
 
@@ -37,8 +38,9 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ReportModel>> Add(ReportModel reportModel)
+        public async Task<ActionResult<ReportModelViewModel>> Add(ReportModelViewModel reportModel)
         {
+
             if (!ModelState.IsValid) return FormattedResponse(ModelState);
 
             await _reportModelService.Add(_mapper.Map<ReportModel>(reportModel));
@@ -47,7 +49,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult<ReportModel>> Update(Guid id, ReportModel reportModel)
+        public async Task<ActionResult<ReportModelViewModel>> Update(Guid id, ReportModelViewModel reportModel)
         {
             if(id != reportModel.Id)
             {
@@ -62,13 +64,20 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(reportModel);
         }
 
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult<ReportModelViewModel>> Remove (Guid id)
+        {
+            var reportModel = await GetReportModel(id);
 
-        [HttpDelete]
-        public async Task<ActionResult
+            if (reportModel == null) return NotFound();
 
+            await _reportModelService.Remove(id);
 
+            return FormattedResponse(reportModel);
 
-        public async Task<ReportModel> GetReportModel(Guid id) => _mapper.Map<ReportModel>(await _reportModelService.Show(id));
+        }
+
+        public async Task<ReportModelViewModel> GetReportModel(Guid id) => _mapper.Map<ReportModelViewModel>(await _reportModelService.Show(id));
 
     }
 }
