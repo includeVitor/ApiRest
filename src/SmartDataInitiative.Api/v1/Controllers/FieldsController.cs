@@ -30,11 +30,11 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Field>> All() => _mapper.Map<IEnumerable<Field>>(await _fieldService.All());
+        public async Task<IEnumerable<FieldViewModel>> All() => _mapper.Map<IEnumerable<FieldViewModel>>(await _fieldService.All());
 
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Field>> Show(Guid id)
+        public async Task<ActionResult<FieldViewModel>> Show(Guid id)
         {
             var field = await GetField(id);
 
@@ -80,7 +80,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(field);
         }
 
-        private async Task<Field> GetField(Guid id) => _mapper.Map<Field>(await _fieldService.Show(id));
+        private async Task<FieldViewModel> GetField(Guid id) => _mapper.Map<FieldViewModel>(await _fieldService.Show(id));
 
 
     }
