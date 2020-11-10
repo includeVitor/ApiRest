@@ -27,7 +27,7 @@ namespace SmartDataInitiative.Business.Services
             _reportRepository = reportRepository;
         }
 
-        public async Task<IEnumerable<Field>> All() => await _fieldRepository.GetAllFields();
+        public async Task<IEnumerable<Field>> All() => await _fieldRepository.All();
 
         public async Task<Field> Show(Guid id) => await _fieldRepository.GetAllInField(id);
 

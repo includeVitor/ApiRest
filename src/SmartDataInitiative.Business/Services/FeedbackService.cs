@@ -18,7 +18,7 @@ namespace SmartDataInitiative.Business.Services
             _feedbackRepository = feedbackRepository;
         }
 
-        public async Task<IEnumerable<Feedback>> All() => await _feedbackRepository.GetFeedbacks();
+        public async Task<IEnumerable<Feedback>> All() => await _feedbackRepository.All();
 
         public async Task<Feedback> Show(Guid id) => await _feedbackRepository.GetFieldInFeedback(id);
 

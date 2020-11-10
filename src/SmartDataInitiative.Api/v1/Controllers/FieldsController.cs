@@ -67,7 +67,6 @@ namespace SmartDataInitiative.Api.v1.Controllers
             await _fieldService.Update(_mapper.Map<Field>(fieldViewModel));
 
             return FormattedResponse(fieldViewModel);
-
         }
 
         [HttpDelete("{id:guid}")]

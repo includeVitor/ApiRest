@@ -23,12 +23,9 @@ namespace SmartDataInitiative.Api.ViewModels
 
         [Required]
         public Status Status { get; set; }
-
-        public Project Project { get; set; }
-
-        public IEnumerable<Report> Reports { get; set; }
-
-        public IEnumerable<Feedback> Feedbacks { get; set; }
+        
+        [ForeignKey("Project")]
+        public Guid ProjectId { get; set; }
 
     }
 }
