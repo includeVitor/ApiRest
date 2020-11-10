@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
+using SmartDataInitiative.Business.Models;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
@@ -27,8 +28,10 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IEnumerable<ModelViewModel>> All() => _mapper.Map<IEnumerable<ModelViewModel>>(await _modelService.All());
 
+        [HttpGet("{id:guid}")]
         public async Task<ActionResult<ModelViewModel>> Show(Guid id)
         {
             var reportModel = await GetModel(id);
@@ -37,6 +40,18 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
             return FormattedResponse(reportModel);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ModelViewModel>> Add(ModelViewModel modelViewModel)
+        {
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
+
+            await _modelService.Add(_mapper.Map<Model>(modelViewModel));
+
+            return FormattedResponse(modelViewModel);
+        }
+
+
 
 
 
