@@ -39,7 +39,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         {
             var project = await GetProject(id);
 
-            if (project == null) return BadRequest();
+            if (project == null) return NotFound();
 
             return FormattedResponse(project);
         }

@@ -12,23 +12,33 @@ namespace SmartDataInitiative.Api.v1.Controllers
 {
     public class ReportModelController : MainController
     {
-        private readonly IReportService _reportService;
+        private readonly IReportModelService _reportModelService;
         private readonly IMapper _mapper;
 
         public ReportModelController(INotify notify,
-                                    IReportService reportService, 
+                                    IReportModelService reportModelService, 
                                     IMapper mapper) : base(notify)
         {
-            _reportService = reportService;
+            _reportModelService = reportModelService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ReportModel>> All() => await _reportService();
+        public async Task<IEnumerable<ReportModel>> All() => _mapper.Map<IEnumerable<ReportModel>>(await _reportModelService.All());
+
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<ReportModel>> Show(Guid id)
+        {
+            var reportModel = await GetReportModel(id);
+
+            if (reportModel == null) return NotFound();
+
+            return FormattedResponse(reportModel);
+        }
 
 
 
-        public async Task<ReportModel> GetReportModel(Guid id) => _mapper.Map<ReportModel>(await _reportService.Show(id));
+        public async Task<ReportModel> GetReportModel(Guid id) => _mapper.Map<ReportModel>(await _reportModelService.Show(id));
 
     }
 }
