@@ -51,8 +51,21 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(modelViewModel);
         }
 
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult<ModelViewModel>> Update(Guid id, ModelViewModel modelViewModel)
+        {
+            if (id == modelViewModel.Id)
+            {
+                NotifyError("Id incorreto");
+                return FormattedResponse(modelViewModel);
+            }
 
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
 
+            await _modelService.Update(_mapper.Map<Model>(modelViewModel));
+
+            return FormattedResponse(modelViewModel);
+        }
 
 
 
