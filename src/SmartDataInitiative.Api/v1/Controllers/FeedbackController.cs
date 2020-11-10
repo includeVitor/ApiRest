@@ -29,8 +29,10 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IEnumerable<FeedbackViewModel>> All() => _mapper.Map<IEnumerable<FeedbackViewModel>>(await _feedbackService.All());
 
+        [HttpGet("{id:guid}")]
         public async Task<ActionResult<FeedbackViewModel>> Show(Guid id)
         {
             var feedback = await GetFeedback(id);
@@ -40,6 +42,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(feedback);
         }
 
+        [HttpPost]
         public async Task<ActionResult<FeedbackViewModel>> Add(FeedbackViewModel feedbackViewModel)
         {
             if (!ModelState.IsValid) return FormattedResponse(ModelState);
@@ -49,6 +52,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(feedbackViewModel);
         }
 
+        [HttpPut("{id:guid}")]
         public async Task<ActionResult<FeedbackViewModel>> Update(Guid id, FeedbackViewModel feedbackViewModel)
         {
             if (id == feedbackViewModel.Id)
@@ -64,7 +68,17 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(feedbackViewModel);
         }
 
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult<FeedbackViewModel>> Remove(Guid id)
+        {
+            var feedback = await GetFeedback(id);
 
+            if (feedback == null) return FormattedResponse(feedback);
+
+            await _feedbackService.Remove(id);
+
+            return FormattedResponse(feedback);
+        }
 
 
         public async Task<FeedbackViewModel> GetFeedback(Guid id) => _mapper.Map<FeedbackViewModel>(await _feedbackService.Show(id));
