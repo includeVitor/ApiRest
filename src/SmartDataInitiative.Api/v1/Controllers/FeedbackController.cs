@@ -30,6 +30,15 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public async Task<IEnumerable<FeedbackViewModel>> All() => _mapper.Map<IEnumerable<FeedbackViewModel>>(await _feedbackService.All());
 
+        public async Task<ActionResult<FeedbackViewModel>> Show(Guid id)
+        {
+            var feedback = await GetFeedback(id);
+
+            if (feedback == null) return NotFound();
+
+            return FormattedResponse(feedback);
+        }
+
 
         public async Task<FeedbackViewModel> GetFeedback(Guid id) => _mapper.Map<FeedbackViewModel>(await _feedbackService.Show(id));
 
