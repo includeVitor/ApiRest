@@ -49,6 +49,22 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(feedbackViewModel);
         }
 
+        public async Task<ActionResult<FeedbackViewModel>> Update(Guid id, FeedbackViewModel feedbackViewModel)
+        {
+            if (id == feedbackViewModel.Id)
+            {
+                NotifyError("Id incorreto");
+                return FormattedResponse(feedbackViewModel);
+            }
+
+            if (!ModelState.IsValid) return FormattedResponse(feedbackViewModel);
+            
+            await _feedbackService.Update(_mapper.Map<Feedback>(feedbackViewModel));
+
+            return FormattedResponse(feedbackViewModel);
+        }
+
+
 
 
         public async Task<FeedbackViewModel> GetFeedback(Guid id) => _mapper.Map<FeedbackViewModel>(await _feedbackService.Show(id));

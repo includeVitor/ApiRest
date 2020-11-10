@@ -56,7 +56,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<FieldViewModel>> Update(Guid id, FieldViewModel fieldViewModel)
         {
-            if(id == fieldViewModel.id)
+            if(id == fieldViewModel.Id)
             {
                 NotifyError("Id incorreto");
                 return FormattedResponse(fieldViewModel);
