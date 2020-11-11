@@ -33,7 +33,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
             return BadRequest(new
             {
-                success = true,
+                success = false,
                 errors = _notify.GetAllNotifications().Select(n => n.Mesage)
             }); 
 
