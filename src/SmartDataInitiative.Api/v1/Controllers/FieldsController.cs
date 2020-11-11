@@ -76,6 +76,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
             if (field == null) return NotFound();
 
+            await _fieldService.Remove(id);
+
             return FormattedResponse(field);
         }
 

@@ -35,9 +35,9 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new FieldValidation(), field)) return false;
 
-            if (_fieldRepository.Find(f => f.Name == field.Name && f.ProjectId == field.ProjectId).Result.Any())
+            if (_fieldRepository.Find(f => f.Name == field.Name && f.Id != field.Id).Result.Any())
             {
-                Notify("Já existe outra aréa com esse nome");
+                Notify("Já existe outra área com esse nome");
                 return false;
             }
 
@@ -49,9 +49,9 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new FieldValidation(), field)) return false;
 
-            if (_fieldRepository.Find(f => f.Name == field.Name && f.ProjectId == field.ProjectId).Result.Any())
+            if (_fieldRepository.Find(f => f.Name == field.Name && f.Id != field.Id).Result.Any())
             {
-                Notify("Já existe outra aréa com esse nome");
+                Notify("Já existe outra área com esse nome");
                 return false;
             }
 
