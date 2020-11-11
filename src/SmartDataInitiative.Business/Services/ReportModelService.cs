@@ -34,7 +34,7 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new ReportModelValidation(), reportModel)) return false;
 
-            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.Id == reportModel.Id).Result.Any())
+            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.Id != reportModel.Id).Result.Any())
             {
                 Notify("Já existe um modelo de report com esse nome");
                 return false;
@@ -48,7 +48,7 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new ReportModelValidation(), reportModel)) return false;
 
-            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.Id == reportModel.Id).Result.Any())
+            if (_reportModelRepository.Find(p => p.Name == reportModel.Name && p.Id != reportModel.Id).Result.Any())
             {
                 Notify("Já existe um modelo de report com esse nome");
                 return false;

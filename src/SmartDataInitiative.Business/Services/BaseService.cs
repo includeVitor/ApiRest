@@ -34,6 +34,8 @@ namespace SmartDataInitiative.Business.Services
             
             if (validate.IsValid) return true;
 
+            Notify(validate);
+
             return false;
         }
 
