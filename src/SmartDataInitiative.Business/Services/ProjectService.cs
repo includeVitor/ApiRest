@@ -88,7 +88,7 @@ namespace SmartDataInitiative.Business.Services
             {
                 foreach (var field in fields)
                 {
-                    await _reportModelRepository.Remove(field.Id);
+                    await _fieldRepository.Remove(field.Id);
                 }
             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace SmartDataInitiative.Business.Models
 {
@@ -13,6 +14,7 @@ namespace SmartDataInitiative.Business.Models
         public Status Status { get; set; }
 
         /*EF Relation */
+        [JsonIgnore]
         public Project Project { get; set; }
         public IEnumerable<Report> Reports { get; set; }
         public IEnumerable<Feedback> Feedbacks { get; set; }

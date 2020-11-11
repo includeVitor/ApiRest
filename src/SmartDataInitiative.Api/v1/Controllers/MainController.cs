@@ -41,7 +41,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
 
-        protected ActionResult CustomResponse(ModelStateDictionary modelState)
+        protected ActionResult FormattedResponse(ModelStateDictionary modelState)
         {
             if (!modelState.IsValid) NotifyInvalidModelState(modelState);
 

@@ -33,6 +33,5 @@ namespace SmartDataInitiative.Data.Repository
                     .Include(c => c.Fields)
                     .ToListAsync();
 
-
     }
 }
