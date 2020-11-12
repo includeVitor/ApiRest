@@ -29,13 +29,11 @@ namespace SmartDataInitiative.Data.Repository
         public async Task<ReportModel> GetAllInReportModel(Guid id) => await
                     Db.ReportModels.AsNoTracking()
                     .Include(c => c.Models)
-                    .Include(c => c.Project)
                     .FirstOrDefaultAsync(c => c.Id == id);
 
         public async Task<IEnumerable<ReportModel>> GetAllReportModels() => await
                  Db.ReportModels.AsNoTracking()
                  .Include(c => c.Models)
-                 .Include(c => c.Project)
                  .ToListAsync();
 
 
