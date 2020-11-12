@@ -24,7 +24,6 @@ namespace SmartDataInitiative.Data.Repository
 
         public async Task<Model> GetAllInModel(Guid id) => await
                    Db.Models.AsNoTracking()
-                   .Include(c => c.ReportModel)
                    .FirstOrDefaultAsync(c => c.Id == id);
 
         public async Task<IEnumerable<Model>> GetAllModels() => await

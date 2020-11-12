@@ -15,9 +15,9 @@ namespace SmartDataInitiative.Api.Configuration
             CreateMap<Project, ProjectViewModel>().ReverseMap();
             CreateMap<Field, FieldViewModel>().ReverseMap();
             CreateMap<ReportModel, ReportModelViewModel>().ReverseMap();
-            //CreateMap<Model, ModelViewModel>().ReverseMap();
-            //CreateMap<Report, ReportViewModel>().ReverseMap();
-            //CreateMap<Feedback, FeedbackViewModel>().ReverseMap();
+            CreateMap<Model, ModelViewModel>().ReverseMap();
+            CreateMap<Report, ReportViewModel>().ReverseMap();
+            CreateMap<Feedback, FeedbackViewModel>().ReverseMap();
         }
     }
 }

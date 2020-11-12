@@ -22,7 +22,7 @@ namespace SmartDataInitiative.Business.Services
 
         public async Task<IEnumerable<Model>> All() => await _modelRepository.All();
 
-        public async Task<Model> Show(Guid id) => await _modelRepository.GetById(id);
+        public async Task<Model> Show(Guid id) => await _modelRepository.GetAllInModel(id);
 
         public async Task<bool> Add(Model model)
         {
@@ -41,7 +41,7 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new ModelValidation(), model)) return false;
 
-            if (_modelRepository.Find(m => m.Name == model.Name && m.Id == model.Id).Result.Any())
+            if (_modelRepository.Find(m => m.Name == model.Name && m.Id != model.Id).Result.Any())
             {
                 Notify("Já existe modelo com esse nome");
                 return false;
