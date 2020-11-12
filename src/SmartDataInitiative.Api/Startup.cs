@@ -36,6 +36,8 @@ namespace SmartDataInitiative.Api
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddIdentityConfiguration(Configuration);
+
             services.WebApiConfig();
 
             services.ResolveDependencies();
