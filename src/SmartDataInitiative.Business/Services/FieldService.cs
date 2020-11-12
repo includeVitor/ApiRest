@@ -35,7 +35,7 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new FieldValidation(), field)) return false;
 
-            if (_fieldRepository.Find(f => f.Name == field.Name && f.Id != field.Id).Result.Any())
+            if (_fieldRepository.Find(f => f.Name == field.Name).Result.Any())
             {
                 Notify("Já existe outra área com esse nome");
                 return false;

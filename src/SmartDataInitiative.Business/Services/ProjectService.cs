@@ -34,7 +34,7 @@ namespace SmartDataInitiative.Business.Services
         {
             if (!ExecuteValidation(new ProjectValidation(), project)) return false;
 
-            if (_projectRepository.Find(p => p.Name == project.Name && p.Id == project.Id).Result.Any())
+            if (_projectRepository.Find(p => p.Name == project.Name).Result.Any())
             {
                 Notify("Já existe um projeto com esse nome");
                 return false;
