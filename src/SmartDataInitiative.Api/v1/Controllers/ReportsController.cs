@@ -15,12 +15,12 @@ namespace SmartDataInitiative.Api.v1.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class ReportController : MainController
+    public class ReportsController : MainController
     {
         private readonly IReportService _reportService;
         private readonly IMapper _mapper;
 
-        public ReportController(INotify notify, 
+        public ReportsController(INotify notify, 
                                 IReportService reportService, 
                                 IMapper mapper) : base(notify)
         {

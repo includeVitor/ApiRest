@@ -22,7 +22,7 @@ namespace SmartDataInitiative.Business.Services
 
         public async Task<IEnumerable<Report>> All() => await _reportRepository.All();
 
-        public async Task<Report> Show(Guid id) => await _reportRepository.GetById(id);
+        public async Task<Report> Show(Guid id) => await _reportRepository.GetAllInReport(id);
 
         public async Task<bool> Add(Report report)
         {

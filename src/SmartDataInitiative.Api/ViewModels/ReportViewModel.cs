@@ -1,7 +1,9 @@
-﻿using SmartDataInitiative.Business.Models;
+﻿using Newtonsoft.Json;
+using SmartDataInitiative.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +20,14 @@ namespace SmartDataInitiative.Api.ViewModels
         [Required]
         public DateTime FinalDate { get; set; }
 
+        [ForeignKey("ReportModel")]
+        public Guid ReportModelId { get; set; }
+
+        [ForeignKey("Field")]
+        public Guid FieldId { get; set; }
+
         public ReportModel ReportModel { get; set; }
+
         public Field Field { get; set; }
 
 

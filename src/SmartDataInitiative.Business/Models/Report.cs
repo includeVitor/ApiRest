@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace SmartDataInitiative.Business.Models
 {
@@ -12,7 +13,9 @@ namespace SmartDataInitiative.Business.Models
         public DateTime FinalDate { get; set; }
         
         /*EF Relation */
+        [JsonIgnore]
         public ReportModel ReportModel { get; set; }
+        [JsonIgnore]
         public Field Field { get; set; }
     }
 }
