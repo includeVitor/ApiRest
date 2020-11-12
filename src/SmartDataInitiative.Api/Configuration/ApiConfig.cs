@@ -22,12 +22,6 @@ namespace SmartDataInitiative.Api.Configuration
             });
 
             services.AddControllers();
-                
-            //    .AddNewtonsoftJson(options =>
-            //{
-            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-
-            //});
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
