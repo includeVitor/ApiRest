@@ -17,7 +17,8 @@ using SmartDataInitiative.Business.Interfaces;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/")]
     [ApiController]
     public class AuthController : MainController
     {
@@ -73,7 +74,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> Login(LoginUserViewModel loginUser)
         {
-            if (!ModelState.IsValid) return FormattedResponse(loginUser);
+            if (!ModelState.IsValid) return FormattedResponse(ModelState);
 
             var result = await _signInManager.PasswordSignInAsync(loginUser.Email, loginUser.Password, false, true);
 
