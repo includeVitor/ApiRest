@@ -16,7 +16,7 @@ namespace SmartDataInitiative.Api.Configuration
         public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,
                                                                        IConfiguration configuration)
         {
-            services.AddDbContext<IdentityDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
@@ -24,7 +24,7 @@ namespace SmartDataInitiative.Api.Configuration
             services
                 .AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddErrorDescriber<IdentityPortugueseMessage>()
                 .AddDefaultTokenProviders();
 
