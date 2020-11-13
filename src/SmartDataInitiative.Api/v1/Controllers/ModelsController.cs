@@ -22,7 +22,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public ModelsController(INotify notify,
                                 IModelService modelService, 
-                                IMapper mapper) : base(notify)
+                                IMapper mapper,
+                                IUser user) : base(notify, user)
         {
             _modelService = modelService;
             _mapper = mapper;

@@ -14,9 +14,24 @@ namespace SmartDataInitiative.Api.v1.Controllers
     {
         private readonly INotify _notify;
 
-        public MainController(INotify notify)
+        public readonly IUser AppUser;
+
+        protected Guid UsuarioId { get; set; }
+
+        protected bool UsuarioAutenticado { get; set; }
+
+        public MainController(INotify notify,
+                              IUser appUser)
         {
             _notify = notify;
+            AppUser = appUser;
+
+            if (AppUser.IsAuthenticated())
+            {
+                UsuarioId = appUser.GetUserId();
+                UsuarioAutenticado = true;
+            }
+
         }
 
 

@@ -23,7 +23,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public FieldsController(INotify notify,
                                 IMapper mapper, 
-                                IFieldService fieldService) : base(notify)
+                                IFieldService fieldService,
+                                IUser user) : base(notify, user)
         {
             _mapper = mapper;
             _fieldService = fieldService;

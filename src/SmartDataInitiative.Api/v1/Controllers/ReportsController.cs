@@ -22,7 +22,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public ReportsController(INotify notify, 
                                 IReportService reportService, 
-                                IMapper mapper) : base(notify)
+                                IMapper mapper,
+                                IUser user) : base(notify, user)
         {
             _reportService = reportService;
             _mapper = mapper;

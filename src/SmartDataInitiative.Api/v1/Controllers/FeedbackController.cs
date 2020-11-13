@@ -23,7 +23,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public FeedbackController(INotify notify,
                                   IFeedbackService feedbackService, 
-                                  IMapper mapper) : base(notify)
+                                  IMapper mapper,
+                                  IUser user) : base(notify, user)
         {
             _feedbackService = feedbackService;
             _mapper = mapper;

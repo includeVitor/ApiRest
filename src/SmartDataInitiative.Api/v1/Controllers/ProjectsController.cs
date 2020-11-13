@@ -25,7 +25,8 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
         public ProjectsController(INotify notify,
                                   IProjectService projectService,
-                                  IMapper mapper) : base(notify)
+                                  IMapper mapper,
+                                  IUser user) : base(notify, user)
         {
             _projectService = projectService;
             _mapper = mapper;
