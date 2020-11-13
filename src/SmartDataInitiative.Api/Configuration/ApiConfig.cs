@@ -35,7 +35,11 @@ namespace SmartDataInitiative.Api.Configuration
 
         public static IApplicationBuilder UseMvcConfiguration(this IApplicationBuilder app)
         {
+
+            app.UseHttpsRedirection();
+
             app.UseRouting()
+               .UseAuthorization()
                .UseEndpoints(endpoints =>
                {
                    endpoints.MapControllers();

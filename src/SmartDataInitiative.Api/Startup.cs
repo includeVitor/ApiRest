@@ -34,9 +34,9 @@ namespace SmartDataInitiative.Api
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddAutoMapper(typeof(Startup));
-
             services.AddIdentityConfiguration(Configuration);
+
+            services.AddAutoMapper(typeof(Startup));       
 
             services.WebApiConfig();
 
@@ -51,6 +51,8 @@ namespace SmartDataInitiative.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
 
             app.UseMvcConfiguration();
         }

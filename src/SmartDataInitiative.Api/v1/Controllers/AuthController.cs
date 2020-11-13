@@ -42,7 +42,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             _logger = logger;
         }
 
-        [HttpPost("nova-conta")]
+        [HttpPost("register")]
         public async Task<ActionResult> Registrar(RegisterUserViewModel registerUser)
         {
             if (!ModelState.IsValid) return FormattedResponse(ModelState);
@@ -70,7 +70,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(registerUser);
         }
 
-        [HttpPost("entrar")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(LoginUserViewModel loginUser)
         {
             if (!ModelState.IsValid) return FormattedResponse(loginUser);
