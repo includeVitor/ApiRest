@@ -29,6 +29,24 @@ namespace SmartDataInitiative.Api.Configuration
                 options.SuppressModelStateInvalidFilter = true;
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Development", builder =>
+                    builder
+                    .SetIsOriginAllowed(_ => true)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+
+                options.AddPolicy("Production", builder =>
+                    builder
+                    .WithMethods("GET")
+                    .WithOrigins("http://localhost:8080")
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .AllowAnyHeader());
+
+            });
+
             services.AddMvc();
 
             return services;
