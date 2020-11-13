@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartDataInitiative.Api.ViewModels;
 using SmartDataInitiative.Business.Interfaces;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace SmartDataInitiative.Api.v1.Controllers
 {
+    [Authorize]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]

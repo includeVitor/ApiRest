@@ -1,14 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using SmartDataInitiative.Api.Extensions;
 using SmartDataInitiative.Business.Interfaces;
 using SmartDataInitiative.Business.Interfaces.Services;
 using SmartDataInitiative.Business.Notications;
 using SmartDataInitiative.Business.Services;
 using SmartDataInitiative.Data.Context;
 using SmartDataInitiative.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace SmartDataInitiative.Api.Configuration
 {
@@ -42,7 +41,12 @@ namespace SmartDataInitiative.Api.Configuration
             services.AddScoped<IFeedbackService, FeedbackService>();
 
 
-           
+            // User
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
+
+
+
 
             return services;
         }
