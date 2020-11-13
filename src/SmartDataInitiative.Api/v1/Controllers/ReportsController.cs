@@ -83,6 +83,6 @@ namespace SmartDataInitiative.Api.v1.Controllers
         }
 
 
-        public async Task<ReportViewModel> GetReport(Guid id) => _mapper.Map<ReportViewModel>(await _reportService.Show(id));
+        private async Task<ReportViewModel> GetReport(Guid id) => _mapper.Map<ReportViewModel>(await _reportService.Show(id));
     }
 }

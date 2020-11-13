@@ -82,6 +82,6 @@ namespace SmartDataInitiative.Api.v1.Controllers
             return FormattedResponse(model);
         }
 
-        public async Task<ModelViewModel> GetModel(Guid id) => _mapper.Map<ModelViewModel>(await _modelService.Show(id));
+        private async Task<ModelViewModel> GetModel(Guid id) => _mapper.Map<ModelViewModel>(await _modelService.Show(id));
     }
 }
