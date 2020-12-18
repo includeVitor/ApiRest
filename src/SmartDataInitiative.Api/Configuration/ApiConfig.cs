@@ -22,7 +22,8 @@ namespace SmartDataInitiative.Api.Configuration
                 options.SubstituteApiVersionInUrl = true;
             });
 
-            services.AddControllers();
+            services.AddControllersWithViews();
+
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -61,10 +62,12 @@ namespace SmartDataInitiative.Api.Configuration
                .UseAuthorization()
                .UseEndpoints(endpoints =>
                {
-                   endpoints.MapControllers();
+                    endpoints.MapControllerRoute(
+                       name: "default",
+                       pattern: "{controller}/{action=Index}/{id?}");
                });
 
-
+      
             return app;
         }
 

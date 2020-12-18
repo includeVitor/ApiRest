@@ -90,7 +90,7 @@ namespace SmartDataInitiative.Api.v1.Controllers
                 return FormattedResponse(loginUser);
             }
 
-            NotifyError("Usuário ou seha incorretos");
+            NotifyError("Usuário ou senha incorretos");
             return FormattedResponse(loginUser);
 
         }
@@ -113,7 +113,6 @@ namespace SmartDataInitiative.Api.v1.Controllers
 
             var IdentityClaims = new ClaimsIdentity();
             IdentityClaims.AddClaims(claims);
-
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);

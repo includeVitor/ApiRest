@@ -38,6 +38,8 @@ namespace SmartDataInitiative.Api.ViewModels
 
         public string Email { get; set; }
 
+        public string Name { get; set; }
+
         public IEnumerable<ClaimViewModel> Claims { get; set; }
     }
 

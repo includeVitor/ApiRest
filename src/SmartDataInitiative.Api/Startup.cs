@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SmartDataInitiative.Api.Configuration;
 using SmartDataInitiative.Data.Context;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace SmartDataInitiative.Api
 {
@@ -29,7 +30,7 @@ namespace SmartDataInitiative.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
-        {
+        {   
             services.AddDbContext<MyDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
@@ -42,6 +43,11 @@ namespace SmartDataInitiative.Api
             services.WebApiConfig();
 
             services.AddSwaggerConfig();
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
 
             services.ResolveDependencies();
 
@@ -61,11 +67,23 @@ namespace SmartDataInitiative.Api
                 app.UseHsts();
             }
 
+            app.UseSpaStaticFiles(new StaticFileOptions { RequestPath = "/clientapp/build" });
+
             app.UseAuthentication();
 
             app.UseMvcConfiguration();
 
             app.UseSwaggerConfig(provider);
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp/build";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
         }
     }
 }
