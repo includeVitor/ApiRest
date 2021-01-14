@@ -1,7 +1,7 @@
 using Moq;
-using SmartDataInitiative.Business.Interfaces;
-using SmartDataInitiative.Business.Interfaces.Services;
-using SmartDataInitiative.Business.Models;
+using ApiRestful.Business.Interfaces;
+using ApiRestful.Business.Interfaces.Services;
+using ApiRestful.Business.Models;
 using System;
 using System.Threading.Tasks;
 using Xunit;
