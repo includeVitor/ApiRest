@@ -45,13 +45,7 @@ namespace ApiRestful.Api
 
             services.AddSwaggerConfig();
 
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
-
             services.ResolveDependencies();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,16 +67,6 @@ namespace ApiRestful.Api
             app.UseMvcConfiguration();
 
             app.UseSwaggerConfig(provider);
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
         }
     }
 }
