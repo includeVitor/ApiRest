@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{283533F2-6F10-4EA2-8C45-5AF5AF747E38}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{5287CA06-98F9-49A4-AC8B-89FE6C2DA981}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRestful.Api", "src\ApiRestful.Api\ApiRestful.Api.csproj", "{DF424526-CA7D-43FF-A3F3-35D4E47DCBE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRestful.Business", "src\ApiRestful.Business\ApiRestful.Business.csproj", "{0C9E6BFF-3C5F-49E0-9171-FDDF84E0EB4D}"
@@ -21,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5287CA06-98F9-49A4-AC8B-89FE6C2DA981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5287CA06-98F9-49A4-AC8B-89FE6C2DA981}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5287CA06-98F9-49A4-AC8B-89FE6C2DA981}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5287CA06-98F9-49A4-AC8B-89FE6C2DA981}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF424526-CA7D-43FF-A3F3-35D4E47DCBE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF424526-CA7D-43FF-A3F3-35D4E47DCBE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF424526-CA7D-43FF-A3F3-35D4E47DCBE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,7 +34,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5287CA06-98F9-49A4-AC8B-89FE6C2DA981} = {283533F2-6F10-4EA2-8C45-5AF5AF747E38}
 		{DF424526-CA7D-43FF-A3F3-35D4E47DCBE7} = {CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}
 		{0C9E6BFF-3C5F-49E0-9171-FDDF84E0EB4D} = {CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}
 		{549FB6AA-14E5-4181-9142-B8FD9274483E} = {CE6B9F23-2FD8-40C6-90B5-B2DF7F00FF7E}
